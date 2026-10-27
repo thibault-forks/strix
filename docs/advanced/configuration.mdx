@@ -21,8 +21,11 @@ Configure Strix using environment variables or a config file.
 
 <ParamField path="STRIX_API_TYPE" type="string">
   Select the OpenAI API path for the model: `responses` or `chat_completions`.
-  By default, a custom `LLM_API_BASE` uses chat completions. Set this variable
-  when your gateway requires the other API. Also accepts `STRIX_FORCE_API`.
+  By default the model decides: Responses when LiteLLM's model catalog lists
+  `/v1/responses` for it (e.g. `gpt-5`), chat completions otherwise. A custom
+  `LLM_API_BASE` does not change this, so set `STRIX_API_TYPE=chat_completions`
+  when your gateway only serves chat completions. Applies to bare and `openai/`
+  model names. Also accepts `STRIX_FORCE_API`.
 </ParamField>
 
 <ParamField path="LLM_EXTRA_HEADERS" type="string">
